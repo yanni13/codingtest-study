@@ -1,14 +1,12 @@
 def solution(players, m, k):
-    history = []
+    answer = []
     
     for player in players:
-        # 최근 k번의 history 값과 m을 사용하여 예상 점수 계산
-        total = sum((history + [1])[-k:]) * m
-
+        total = sum((answer + [1])[-k:]) * m
+        
         if total > player:
-            history = history + [0]
+            answer.append(0)
         else:
-            add = (player - total) // m + 1
-            history += [add]
-
-    return sum(history)
+            add = (player-total) // m + 1
+            answer.append(add)
+    return sum(answer)
