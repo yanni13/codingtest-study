@@ -10,7 +10,7 @@ def solution(numbers):
     for i in numbers:
         temp.append(i)
         
-    for i in range(1, len(numbers)+1):
+    for i in range(1,len(numbers)+1):
         answer.update(permutations(temp, i))
     
 
@@ -30,11 +30,3 @@ def solution(numbers):
             
             
     return len(set(result))
-
-# #소수 판별
-# def is_prime_number(x):
-#     for i in range(2, x):
-#         if i % x == 0:
-#             return False
-#     return True
-        
