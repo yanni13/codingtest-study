@@ -1,16 +1,29 @@
+import Foundation
+
 let input = readLine()!
-let sorted = input.sorted()
-let result = String(sorted)
+let oneToRemove = input.filter { $0 == "1" }.count/2
+let zeroToRemove = input.filter { $0 == "0" }.count/2
 
-let zeroParts = result.split(separator: "1")
-var zeroCount = zeroParts.reduce(0) {$0 + $1.count}
+var result = ""
+var removedOnes = 0
 
+for char in input {
+    if char == "1", removedOnes < oneToRemove{
+        removedOnes += 1
+        continue
+    }
+    result.append(char)
+}
 
-let oneParts = result.split(separator: "0")
-var oneCount = oneParts.reduce(0) {$0 + $1.count}
+var final = ""
+var removedZeros = 0
+for char in result.reversed() {
+    if char == "0", removedZeros < zeroToRemove{
+        removedZeros += 1
+        continue
+    }
+    final.append(char)
+}
 
-zeroCount = zeroCount / 2
-oneCount = oneCount / 2
+print(String(final.reversed()))
 
-let final = String(repeating: "0", count: zeroCount) + String(repeating: "1", count: oneCount)
-print(final)
